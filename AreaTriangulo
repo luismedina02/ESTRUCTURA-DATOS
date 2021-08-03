@@ -1,0 +1,73 @@
+//////////////////////////////////////////  TRIANGULO.h  //////////////////////////////////////////////////
+#pragma once
+class Triangulo
+{
+private:
+	int luis;
+	int altura;
+	int area;
+public:
+	Triangulo(void);
+	int Get_luis();
+	int Get_altura();
+	int Get_area();
+	void Set_luis(int l);
+	void Set_altura(int h);
+	void Set_area(int a);
+
+	int Calcular();
+
+};
+
+//////////////////////////////////////////  TRIANGULO.cpp  //////////////////////////////////////////////////
+
+#include "StdAfx.h"
+#include "Triangulo.h"
+
+
+Triangulo::Triangulo(void)
+{
+}
+int Triangulo::Get_luis()
+{
+	return luis;
+}
+int Triangulo::Get_altura()
+{
+	return altura;
+}
+int Triangulo::Get_area()
+{
+	return area;
+}
+void Triangulo::Set_luis(int l)
+{
+	luis=l;
+}
+void Triangulo::Set_altura(int h)
+{
+	altura=h;
+}
+void Triangulo::Set_area(int a)
+{
+	area=a;
+}
+int Triangulo::Calcular()
+{
+	area=(luis*altura)/2;
+	return area;
+}
+
+
+//////////////////////////////////////////  form1.h  //////////////////////////////////////////////////
+
+#pragma endregion
+	private: System::Void btnCalcular_Click(System::Object^  sender, System::EventArgs^  e) {
+				 Triangulo triangulito;
+				 triangulito.Set_luis(System::Convert::ToInt32(txtluis->Text));
+				 triangulito.Set_altura(System::Convert::ToInt32(txtaltura->Text));
+				 int areafin;
+				 areafin=triangulito.Calcular();
+				 txtarea->Text=System::Convert::ToString(areafin);
+			 }
+};
