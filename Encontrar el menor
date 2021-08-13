@@ -1,0 +1,32 @@
+#include "stdafx.h"
+#include <conio.h>
+#include <iostream>
+using namespace std;
+
+int min(int x, int y);
+
+int main(){
+	int n1, n2;
+	int menor;
+	cout<<"Digite 2 numeros: ";
+	cin>>n1>>n2;
+
+	menor = min(n1,n2);
+	cout<<"El menor de los 2 numeros es: "<<menor<<endl;
+	
+	getch();
+	return 0;
+}
+
+int min(int x, int y){
+	int numMin;
+	
+	if (x<y){
+		numMin = x;
+	}
+	else{
+		numMin = y;
+	}
+
+	return numMin;
+}
