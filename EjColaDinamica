@@ -1,0 +1,113 @@
+//Nodo.cpp
+
+#pragma once
+#include "Registro.h"
+class Nodo
+{
+public:
+	Registro registro;
+	Nodo *puntero;
+	Nodo();
+	~Nodo(void);
+};
+
+//Nodo.cpp
+
+#include "StdAfx.h"
+#include "Nodo.h"
+
+
+Nodo::Nodo()
+{
+	puntero = NULL;
+}
+
+
+Nodo::~Nodo(void)
+{
+}
+
+//Registro.cpp
+
+#include "StdAfx.h"
+#include "Registro.h"
+
+
+Registro::Registro()
+{nombre = "Unknown";
+ edad=0;
+ numero_telefonico=0;
+}
+
+
+Registro::~Registro(void)
+{
+}
+
+//ejcoladi.cpp
+
+#include "stdafx.h"
+#include <iostream> 
+#include "Nodo.h" //Se incluye a la clase Nodo
+using namespace std; 
+void Encolar( Nodo *&inicio, Nodo *&fin){ //Punteros enviados por referencia      
+    Nodo *Elemento = new Nodo; //Creacion del nodo      
+    if(inicio == NULL){ 
+         
+        inicio = fin = Elemento; //Le asigno la direccion del primer nodo          
+        cout<<"Edad: "; cin>>Elemento->registro.edad; 
+        cout<<"Nombres: "; cin>>Elemento->registro.nombre; 
+        cout<<"Numero: "; cin>>Elemento->registro.numero_telefonico; 
+         
+         
+    }else{ 
+         
+        fin->puntero = Elemento; //Asigno el puntero del anterior elemento al nuevo
+
+        fin = Elemento; //Cambio la direccion del ultimo nodo creado 
+
+        cout<<"Edad: "; cin>>Elemento->registro.edad; 
+        cout<<"Nombres: "; cin>>Elemento->registro.nombre; 
+        cout<<"Numero: "; cin>>Elemento->registro.numero_telefonico;  
+         
+    } 
+     
+     } void Desencolar(Nodo *&inicio){ 
+    if(inicio != NULL){ 
+        cout<<"Edad: "<<inicio->registro.edad<<endl; 
+        cout<<"Nombres: "<<inicio->registro.nombre<<endl; 
+        cout<<"Numero: "<<inicio->registro.numero_telefonico<<endl; 
+        inicio = inicio->puntero; // Cambio Inicio al siguiente nodo
+    }else{ 
+        cout<<"La cola se encuentra vacia"<<endl; 
+    } } int main (int argc, char *argv[]) { 
+    Nodo *inicio = NULL , *fin = NULL; //Punteros libres para el manejo de la cola
+    int opc = 0, respuesta = 0; 
+    do{ 
+        cout<<"1. LA COLA ESTA VACIA?"<<endl; 
+        cout<<"2. ENCOLAR"<<endl; 
+        cout<<"3. DESENCOLAR"<<endl; 
+        cout<<"4. FINALIZAR"<<endl; 
+        cout<<"Opcion: "; cin>>opc; 
+         
+         
+        switch (opc){ 
+        case 1 : 
+            if( inicio == NULL) 
+                cout<<"La cola se encuentra vacia"<<endl; 
+            else 
+                cout<<"Existe elemento(s) dentro de la cola"<<endl; 
+            break; 
+        case 2 : 
+            Encolar(inicio,fin); 
+            break; 
+        case 3: 
+            Desencolar(inicio); 
+            break ; 
+             
+        } 
+         
+    }while(opc != 4); 
+     
+     
+    return 0; } 
